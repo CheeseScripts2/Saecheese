@@ -2923,15 +2923,15 @@ BX.module("ui.stats", function(BX)
     local TextService       = svc.TextService
 
     -- Mono palette.
-    local BG_TOP  = Color3.fromRGB(26, 26, 30)
-    local BG_BOT  = Color3.fromRGB(14, 14, 17)
-    local ELEMENT = Color3.fromRGB(41, 41, 48)
-    local ACCENT  = Color3.fromRGB(206, 206, 212)
-    local ICON    = Color3.fromRGB(240, 240, 246)
-    local TEXT    = Color3.fromRGB(220, 220, 220)
+    local BG_TOP  = Color3.fromRGB(255, 255, 0)
+    local BG_BOT  = Color3.fromRGB(255, 255, 0)
+    local ELEMENT = Color3.fromRGB(255, 255, 0)
+    local ACCENT  = Color3.fromRGB(255, 255, 0)
+    local ICON    = Color3.fromRGB(255, 255, 0)
+    local TEXT    = Color3.fromRGB(255, 255, 0)
     -- Colour only where it means something: a number that has gone bad.
-    local WARN    = Color3.fromRGB(240, 190, 90)
-    local BAD     = Color3.fromRGB(240, 110, 110)
+    local WARN    = Color3.fromRGB(255, 255, 0)
+    local BAD     = Color3.fromRGB(255, 255, 0)
 
     local FONT, TEXT_SIZE = Enum.Font.GothamMedium, 13
     local STROKE_T = 0.45
@@ -3546,14 +3546,14 @@ BX.module("ui.stats", function(BX)
             -- cursor, and this is the drag handle.
             AutomaticSize = Enum.AutomaticSize.X,
             Size = UDim2.fromOffset(0, touch and 36 or 30),
-            BackgroundColor3 = Color3.new(1, 1, 1), BackgroundTransparency = 0.06,
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0), BackgroundTransparency = 0.06,
             BorderSizePixel = 0, Active = true, AutoButtonColor = false,
             Text = "", Selectable = false,
         }, gui)
         mk("UICorner", { CornerRadius = UDim.new(0, 9) }, pill)
         mk("UIGradient", { Color = ColorSequence.new(BG_TOP, BG_BOT), Rotation = 90 }, pill)
         stroke = mk("UIStroke", {
-            Color = Color3.new(1, 1, 1), Transparency = STROKE_T, Thickness = 1,
+            Color = Color3.fromRGB(255, 255, 0), Transparency = STROKE_T, Thickness = 1,
             ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
         }, pill)
         mk("UIGradient", { Color = ColorSequence.new(ACCENT, ELEMENT), Rotation = 90 }, stroke)
@@ -4006,12 +4006,12 @@ BX.module("ui.window", function(BX)
             sidebarLayout = true,
             profile = "Premium",
             theme = {
-                AccentColor     = Color3.fromRGB(255, 140, 0),
-                AccentStroke    = Color3.fromRGB(180, 80, 255),
+                AccentColor     = Color3.fromRGB(255, 255, 0),
+                AccentStroke    = Color3.fromRGB(255, 255, 0),
                 AccentGlow      = 0.45,
-                TextColor       = Color3.fromRGB(255, 150, 30),
-                BackgroundColor = Color3.fromRGB(60, 20, 100),
-                ElementColor    = Color3.fromRGB(90, 35, 150),
+                TextColor       = Color3.fromRGB(255, 255, 0),
+                BackgroundColor = Color3.fromRGB(255, 255, 0),
+                ElementColor    = Color3.fromRGB(255, 255, 0),
             },
             -- Off deliberately. Config persistence is its own feature and is
             -- not ported yet; leaving autoLoad on would have the library
@@ -4064,7 +4064,7 @@ BX.module("ui.window", function(BX)
         if not shown then return end
         window:CreateTag({
             title = "V" .. shown,
-            color = Color3.fromRGB(206, 206, 212),
+            color = Color3.fromRGB(255, 255, 0),
         })
     end)
 
@@ -4141,8 +4141,8 @@ BX.module("ui.window", function(BX)
 
             local particles = {}
             local rng = Random.new()
-            local orange = Color3.fromRGB(255, 140, 0)
-            local black = Color3.fromRGB(80, 20, 130)
+            local orange = Color3.fromRGB(255, 255, 0)
+            local black = Color3.fromRGB(255, 255, 0)
             for i = 1, 20 do
                 local d = Instance.new("Frame")
                 local sz = rng:NextInteger(3, 7)
@@ -4177,7 +4177,7 @@ BX.module("ui.window", function(BX)
                 if obj:IsA("TextLabel") or obj:IsA("TextButton") then
                     local t = tostring(obj.Text or ""):lower()
                     if t:find("levon hub", 1, true) then
-                        obj.TextColor3 = Color3.fromRGB(200, 80, 255)
+                        obj.TextColor3 = Color3.fromRGB(255, 255, 0)
                     end
                 end
             end
@@ -4290,7 +4290,7 @@ BX.module("ui.window", function(BX)
         outerGlow.AnchorPoint      = Vector2.new(0.5, 0.5)
         outerGlow.Position         = UDim2.new(0.08, 0, 0.88, 0)
         outerGlow.Size             = UDim2.fromOffset(OUT_SIZE, OUT_SIZE)
-        outerGlow.BackgroundColor3 = Color3.fromRGB(120, 0, 220)
+        outerGlow.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         outerGlow.BackgroundTransparency = 0.65
         outerGlow.BorderSizePixel  = 0
         outerGlow.ZIndex           = 8
@@ -4306,7 +4306,7 @@ BX.module("ui.window", function(BX)
         midGlow.AnchorPoint      = Vector2.new(0.5, 0.5)
         midGlow.Position         = UDim2.new(0.08, 0, 0.88, 0)
         midGlow.Size             = UDim2.fromOffset(MID_SIZE, MID_SIZE)
-        midGlow.BackgroundColor3 = Color3.fromRGB(160, 20, 255)
+        midGlow.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         midGlow.BackgroundTransparency = 0.5
         midGlow.BorderSizePixel  = 0
         midGlow.ZIndex           = 9
@@ -4322,7 +4322,7 @@ BX.module("ui.window", function(BX)
         circle.AnchorPoint      = Vector2.new(0.5, 0.5)
         circle.Position         = UDim2.new(0.08, 0, 0.88, 0)
         circle.Size             = UDim2.fromOffset(BTN_SIZE, BTN_SIZE)
-        circle.BackgroundColor3 = Color3.fromRGB(4, 0, 12)
+        circle.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         circle.BorderSizePixel  = 0
         circle.Text             = ""
         circle.AutoButtonColor  = false
@@ -4335,7 +4335,7 @@ BX.module("ui.window", function(BX)
 
         -- Bordo viola elettrico con gradient
         local stroke = Instance.new("UIStroke")
-        stroke.Color           = Color3.fromRGB(180, 50, 255)
+        stroke.Color           = Color3.fromRGB(255, 255, 0)
         stroke.Thickness       = 3.5
         stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         stroke.Parent          = circle
@@ -4359,7 +4359,7 @@ BX.module("ui.window", function(BX)
         overlay.Size                   = UDim2.new(1, 0, 1, 0)
         overlay.AnchorPoint            = Vector2.new(0.5, 0.5)
         overlay.Position               = UDim2.new(0.5, 0, 0.5, 0)
-        overlay.BackgroundColor3       = Color3.fromRGB(100, 0, 200)
+        overlay.BackgroundColor3       = Color3.fromRGB(255, 255, 0)
         overlay.BackgroundTransparency = 0.82
         overlay.BorderSizePixel        = 0
         overlay.ZIndex                 = 12
@@ -4377,7 +4377,7 @@ BX.module("ui.window", function(BX)
         label.Text                   = "CHEESE HUB"
         label.Font                   = Enum.Font.GothamBlack
         label.TextSize               = isTouch and 8 or 10
-        label.TextColor3             = Color3.fromRGB(210, 80, 255)
+        label.TextColor3             = Color3.fromRGB(255, 255, 0)
         label.TextXAlignment         = Enum.TextXAlignment.Center
         label.ZIndex                 = 13
         label.Parent                 = circle
@@ -4796,8 +4796,8 @@ BX.module("ui.tabs.main", function(BX)
                         local scrn = win.screen
                         if TS_ and scrn then
                             BX.try("main.selectPulse", function()
-                                local orange = Color3.fromRGB(180, 60, 255)
-                                local yellow = Color3.fromRGB(180, 80, 255)
+                                local orange = Color3.fromRGB(255, 255, 0)
+                                local yellow = Color3.fromRGB(255, 255, 0)
                                 -- Find the tag label if Rayfield exposes it.
                                 for _, obj in ipairs(scrn:GetDescendants()) do
                                     if obj:IsA("TextLabel") or obj:IsA("Frame") then
@@ -9832,12 +9832,12 @@ BX.module("features.esp.cards", function(BX)
 
     -- The tag's palette, from V3.1 makeTag.
     local C = {
-        bgTop   = Color3.fromRGB(26, 26, 30),
-        bgBot   = Color3.fromRGB(14, 14, 17),
-        accent  = Color3.fromRGB(206, 206, 212),
-        element = Color3.fromRGB(41, 41, 48),
-        title   = Color3.fromRGB(246, 242, 234),
-        sub     = Color3.fromRGB(168, 158, 144),
+        bgTop   = Color3.fromRGB(255, 255, 0),
+        bgBot   = Color3.fromRGB(255, 255, 0),
+        accent  = Color3.fromRGB(255, 255, 0),
+        element = Color3.fromRGB(255, 255, 0),
+        title   = Color3.fromRGB(255, 255, 0),
+        sub     = Color3.fromRGB(255, 255, 0),
     }
 
     -- THE ESP CARD'S TYPE AND INLINE PALETTE, shared by every card feature so
@@ -9980,7 +9980,7 @@ BX.module("features.esp.cards", function(BX)
 
         local frame = Instance.new("Frame")
         frame.Size = UDim2.fromOffset(K.W, K.H)
-        frame.BackgroundColor3 = Color3.new(1, 1, 1)
+        frame.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         frame.BackgroundTransparency = K.BASE_ALPHA
         frame.BorderSizePixel = 0
         frame.ClipsDescendants = true
@@ -9998,7 +9998,7 @@ BX.module("features.esp.cards", function(BX)
 
         -- The tag's bordered stroke, with its own gradient.
         local stroke = Instance.new("UIStroke", frame)
-        stroke.Color = Color3.new(1, 1, 1)
+        stroke.Color = Color3.fromRGB(255, 255, 0)
         stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         stroke.Thickness = 1
         stroke.Transparency = K.BASE_STROKE
@@ -10011,7 +10011,7 @@ BX.module("features.esp.cards", function(BX)
         accent.Position = UDim2.fromOffset(3, 4)
         accent.Size = UDim2.new(0, 2, 1, -8)
         accent.BorderSizePixel = 0
-        accent.BackgroundColor3 = Color3.fromRGB(194, 142, 54)
+        accent.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         accent.Parent = frame
         Instance.new("UICorner", accent).CornerRadius = UDim.new(1, 0)
 
@@ -10295,7 +10295,7 @@ BX.module("features.esp.eggs", function(BX)
     -- an egg whose income, rarity, weight and mutations are fixed for its whole
     -- life. Keyed by uid; two tables swapped per pass so a vanished egg's entry
     -- is dropped without the cache ever growing past the field.
-    local DEFAULT_COLOUR = Color3.fromRGB(200, 200, 200)
+    local DEFAULT_COLOUR = Color3.fromRGB(255, 255, 0)
     local textFor, textNext = {}, {}
     -- Per-slot data handed to cards (filled in place, never re-created).
     local slotData = {}
@@ -10504,7 +10504,7 @@ BX.module("features.esp.plot", function(BX)
     -- per read of the owner records. Only the countdown is formatted per pass.
     local staticFor = {}
     local slotData = {}
-    local DEFAULT_COLOUR = Color3.fromRGB(190, 190, 200)
+    local DEFAULT_COLOUR = Color3.fromRGB(255, 255, 0)
     local READY_TEXT = tint(COL.ready, "<b>READY</b>")
 
     local function ownerRecords(ES, me)
@@ -11455,7 +11455,7 @@ BX.module("features.misc.appearance", function(BX)
         img.ImageTransparency = K.FADE
         -- A solid backing, so a faded image sits on something dark rather than
         -- on whatever happens to be behind the hub.
-        img.BackgroundColor3 = Color3.fromRGB(16, 16, 20)
+        img.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
         img.BackgroundTransparency = 0
         img.BorderSizePixel = 0
         img.ZIndex = 0
@@ -18962,21 +18962,21 @@ do
 
         -- ── colour palette ────────────────────────────────────────────────────
         local C = {
-            bg      = Color3.fromRGB(14, 6, 28),
-            panel   = Color3.fromRGB(34, 16, 56),
-            row     = Color3.fromRGB(42, 20, 66),
-            border  = Color3.fromRGB(140, 50, 220),
-            title   = Color3.fromRGB(180, 60, 255),
-            white   = Color3.fromRGB(255, 245, 235),
-            grey    = Color3.fromRGB(190, 170, 205),
-            blue    = Color3.fromRGB(80,  160, 255),
-            green   = Color3.fromRGB(80,  220, 120),
-            gold    = Color3.fromRGB(255, 200,  60),
-            cosmic  = Color3.fromRGB(180, 100, 255),
-            mythic  = Color3.fromRGB(255, 130,  50),
-            scarce  = Color3.fromRGB(80,  200, 255),
-            btnGo   = Color3.fromRGB(160, 50, 240),
-            btnStop = Color3.fromRGB(110, 30, 180),
+            bg      = Color3.fromRGB(255, 255, 0),
+            panel   = Color3.fromRGB(255, 255, 0),
+            row     = Color3.fromRGB(255, 255, 0),
+            border  = Color3.fromRGB(255, 255, 0),
+            title   = Color3.fromRGB(255, 255, 0),
+            white   = Color3.fromRGB(255, 255, 0),
+            grey    = Color3.fromRGB(255, 255, 0),
+            blue    = Color3.fromRGB(255, 255, 0),
+            green   = Color3.fromRGB(255, 255, 0),
+            gold    = Color3.fromRGB(255, 255, 0),
+            cosmic  = Color3.fromRGB(255, 255, 0),
+            mythic  = Color3.fromRGB(255, 255, 0),
+            scarce  = Color3.fromRGB(255, 255, 0),
+            btnGo   = Color3.fromRGB(255, 255, 0),
+            btnStop = Color3.fromRGB(255, 255, 0),
         }
 
         -- rarity label -> colour
@@ -19067,7 +19067,7 @@ do
             Name = "ArtworkVeil",
             Size = UDim2.fromScale(1, 1),
             Position = UDim2.fromScale(0, 0),
-            BackgroundColor3 = Color3.fromRGB(5, 2, 12),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0),
             BackgroundTransparency = isTouch and 0.34 or 0.28,
             BorderSizePixel = 0,
             ZIndex = 0,
@@ -19075,9 +19075,9 @@ do
         corner(14, artVeil)
         mk("UIGradient", {
             Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(8, 2, 18)),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(18, 5, 34)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(5, 1, 12)),
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0)),
             }),
             Transparency = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 0.10),
@@ -19090,8 +19090,8 @@ do
         -- Subtle dark base, kept translucent so the artwork is still visible.
         mk("UIGradient", {
             Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(18, 8, 32)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 4, 22)),
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0)),
             }),
             Transparency = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 0.58),
@@ -19187,9 +19187,9 @@ do
             Text = "CHEESE HUB",
             Font = Enum.Font.GothamBlack,
             TextSize = brandTextSize,
-            TextColor3 = Color3.fromRGB(200, 60, 255),
+            TextColor3 = Color3.fromRGB(255, 255, 0),
             TextTransparency = 0.1,
-            TextStrokeColor3 = Color3.fromRGB(100, 0, 200),
+            TextStrokeColor3 = Color3.fromRGB(255, 255, 0),
             TextStrokeTransparency = 0.0,
             TextXAlignment = Enum.TextXAlignment.Center,
             TextYAlignment = Enum.TextYAlignment.Center,
@@ -19206,8 +19206,8 @@ do
             RichText = false,
             Font = Enum.Font.GothamBlack,
             TextSize = brandTextSize,
-            TextColor3 = Color3.fromRGB(255, 255, 255),
-            TextStrokeColor3 = Color3.fromRGB(180, 50, 255),
+            TextColor3 = Color3.fromRGB(255, 255, 0),
+            TextStrokeColor3 = Color3.fromRGB(255, 255, 0),
             TextStrokeTransparency = 0.0,
             TextXAlignment = Enum.TextXAlignment.Center,
             TextYAlignment = Enum.TextYAlignment.Center,
@@ -19215,10 +19215,10 @@ do
         }, brandContainer)
         mk("UIGradient", {
             Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)),
-                ColorSequenceKeypoint.new(0.40, Color3.fromRGB(255, 255, 255)),
-                ColorSequenceKeypoint.new(0.70, Color3.fromRGB(220, 160, 255)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(160, 40, 255)),
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.40, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.70, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 0)),
             }),
         }, titleLbl)
 
@@ -19233,9 +19233,9 @@ do
         corner(4, titleAccent)
         mk("UIGradient", {
             Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(88, 12, 150)),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 130, 255)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(88, 12, 150)),
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0)),
             }),
         }, titleAccent)
 
@@ -19292,13 +19292,13 @@ do
             Size = UDim2.fromOffset(isTouch and 235 or 310, isTouch and 104 or 128),
             Position = UDim2.new(0.5, 0, 0.5, 18),
             AnchorPoint = Vector2.new(0.5, 0.5),
-            BackgroundColor3 = Color3.fromRGB(8, 2, 18),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0),
             BackgroundTransparency = 0.10,
             BorderSizePixel = 0,
             ZIndex = 30,
         }, sg)
         corner(isTouch and 16 or 20, intro)
-        mk("UIStroke", {Color = Color3.fromRGB(190, 50, 255), Thickness = 2, Transparency = 0.05}, intro)
+        mk("UIStroke", {Color = Color3.fromRGB(255, 255, 0), Thickness = 2, Transparency = 0.05}, intro)
         local introTitle = mk("TextLabel", {
             Size = UDim2.new(1, -20, 0, isTouch and 39 or 48),
             Position = UDim2.new(0.5, 0, 0, isTouch and 13 or 16),
@@ -19307,35 +19307,35 @@ do
             Text = "CHEESE HUB",
             Font = Enum.Font.GothamBlack,
             TextSize = isTouch and 26 or 34,
-            TextColor3 = Color3.fromRGB(255,255,255),
-            TextStrokeColor3 = Color3.fromRGB(186, 45, 255),
+            TextColor3 = Color3.fromRGB(255, 255, 0),
+            TextStrokeColor3 = Color3.fromRGB(255, 255, 0),
             TextStrokeTransparency = 0,
             ZIndex = 31,
         }, intro)
         mk("UIGradient", {
             Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(255,255,255)),
-                ColorSequenceKeypoint.new(0.55, Color3.fromRGB(235,180,255)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(161,45,255)),
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.55, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0)),
             }),
         }, introTitle)
         local onTop = mk("TextLabel", {
             Size = UDim2.new(1, -34, 0, isTouch and 28 or 34),
             Position = UDim2.new(0.5, 0, 1, isTouch and -36 or -42),
             AnchorPoint = Vector2.new(0.5, 1),
-            BackgroundColor3 = Color3.fromRGB(117, 20, 195),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0),
             BackgroundTransparency = 0.04,
             BorderSizePixel = 0,
             Text = "✦  ON TOP  ✦",
             Font = Enum.Font.GothamBlack,
             TextSize = isTouch and 12 or 15,
-            TextColor3 = Color3.fromRGB(255,255,255),
-            TextStrokeColor3 = Color3.fromRGB(70, 5, 115),
+            TextColor3 = Color3.fromRGB(255, 255, 0),
+            TextStrokeColor3 = Color3.fromRGB(255, 255, 0),
             TextStrokeTransparency = 0.15,
             ZIndex = 31,
         }, intro)
         corner(9, onTop)
-        mk("UIStroke", {Color = Color3.fromRGB(229, 135, 255), Thickness = 1.2, Transparency = 0.02}, onTop)
+        mk("UIStroke", {Color = Color3.fromRGB(255, 255, 0), Thickness = 1.2, Transparency = 0.02}, onTop)
 
         -- Entrance animation: no huge delay, just a clean premium reveal.
         local TweenService = game:GetService("TweenService")
@@ -19399,7 +19399,7 @@ do
         local controlBack = mk("Frame", {
             Size = UDim2.new(1, -12, 0, BTN_H + 31),
             Position = UDim2.new(0, 6, 0, btnTop - 6),
-            BackgroundColor3 = Color3.fromRGB(10, 3, 20),
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0),
             BackgroundTransparency = 0.30,
             BorderSizePixel = 0,
             ZIndex = 1,
@@ -19415,24 +19415,24 @@ do
 
         local goBtn = mk("TextButton", {
             Size = UDim2.new(0.56, -4, 1, 0),
-            BackgroundColor3 = Color3.fromRGB(160, 50, 240), BorderSizePixel = 0,
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0), BorderSizePixel = 0,
             Text = "GO", Font = Enum.Font.Gotham,
-            TextSize = isTouch and 13 or 16, TextColor3 = Color3.fromRGB(0, 0, 0),
+            TextSize = isTouch and 13 or 16, TextColor3 = Color3.fromRGB(255, 255, 0),
         }, btnRow)
         goBtn.ZIndex = 3
         corner(isTouch and 10 or 12, goBtn)
-        local goStroke = mk("UIStroke", { Color = Color3.fromRGB(255, 255, 255), Thickness = 2, Transparency = 0.1 }, goBtn)
+        local goStroke = mk("UIStroke", { Color = Color3.fromRGB(255, 255, 0), Thickness = 2, Transparency = 0.1 }, goBtn)
 
         local stopBtn = mk("TextButton", {
             Size = UDim2.new(0.44, -4, 1, 0),
             Position = UDim2.new(0.56, 4, 0, 0),
-            BackgroundColor3 = Color3.fromRGB(255, 255, 255), BorderSizePixel = 0,
+            BackgroundColor3 = Color3.fromRGB(255, 255, 0), BorderSizePixel = 0,
             Text = "STOP", Font = Enum.Font.Gotham,
-            TextSize = isTouch and 13 or 16, TextColor3 = Color3.fromRGB(0, 0, 0),
+            TextSize = isTouch and 13 or 16, TextColor3 = Color3.fromRGB(255, 255, 0),
         }, btnRow)
         stopBtn.ZIndex = 3
         corner(isTouch and 10 or 12, stopBtn)
-        local stopStroke = mk("UIStroke", { Color = Color3.fromRGB(160, 50, 240), Thickness = 2, Transparency = 0.1 }, stopBtn)
+        local stopStroke = mk("UIStroke", { Color = Color3.fromRGB(255, 255, 0), Thickness = 2, Transparency = 0.1 }, stopBtn)
 
         -- ── status ────────────────────────────────────────────────────────────
         local statusLbl = mk("TextLabel", {
@@ -19469,7 +19469,7 @@ do
             local iconBg = mk("Frame", {
                 Size = UDim2.fromOffset(isTouch and 30 or 36, isTouch and 30 or 36),
                 Position = UDim2.new(0, 12, 0.5, isTouch and -15 or -18),
-                BackgroundColor3 = Color3.fromRGB(42, 20, 66),
+                BackgroundColor3 = Color3.fromRGB(255, 255, 0),
                 BorderSizePixel = 0,
             }, row)
             corner(7, iconBg)
@@ -19654,7 +19654,7 @@ do
             hitBtn.MouseButton1Down:Connect(function()
                 pcall(function()
                     TS_row:Create(row, TweenInfo.new(0.08, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
-                        { BackgroundColor3 = Color3.fromRGB(110, 45, 180) }):Play()
+                        { BackgroundColor3 = Color3.fromRGB(255, 255, 0) }):Play()
                     -- Scale the row down just a touch for a "press" feel
                     local sc_ = row:FindFirstChildOfClass("UIScale")
                     if not sc_ then
@@ -19677,7 +19677,7 @@ do
                     end
                     -- Flash orange (brand accent) then back to row colour
                     TS_row:Create(row, TweenInfo.new(0.06, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
-                        { BackgroundColor3 = Color3.fromRGB(180, 60, 255) }):Play()
+                        { BackgroundColor3 = Color3.fromRGB(255, 255, 0) }):Play()
                     task.delay(0.12, function()
                         pcall(function()
                             TS_row:Create(row, TweenInfo.new(0.35, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
@@ -19691,7 +19691,7 @@ do
             hitBtn.MouseEnter:Connect(function()
                 pcall(function()
                     TS_row:Create(row, TweenInfo.new(0.15, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
-                        { BackgroundColor3 = Color3.fromRGB(75, 28, 120) }):Play()
+                        { BackgroundColor3 = Color3.fromRGB(255, 255, 0) }):Play()
                 end)
             end)
             hitBtn.MouseLeave:Connect(function()
@@ -19794,8 +19794,8 @@ do
             pcall(function()
                 goBtn.BackgroundColor3   = C.btnGo
                 goBtn.Text               = v and "RUNNING" or "GO"
-                goBtn.TextColor3         = Color3.fromRGB(0, 0, 0)
-                stopBtn.TextColor3       = Color3.fromRGB(0, 0, 0)
+                goBtn.TextColor3         = Color3.fromRGB(255, 255, 0)
+                stopBtn.TextColor3       = Color3.fromRGB(255, 255, 0)
             end)
         end
 
@@ -19829,7 +19829,7 @@ do
         goBtn.MouseEnter:Connect(function()
             if not isRunning then
                 game:GetService("TweenService"):Create(goBtn,
-                    TweenInfo.new(0.12), { BackgroundColor3 = Color3.fromRGB(245, 245, 245) }):Play()
+                    TweenInfo.new(0.12), { BackgroundColor3 = Color3.fromRGB(255, 255, 0) }):Play()
             end
         end)
         goBtn.MouseLeave:Connect(function()
@@ -19840,7 +19840,7 @@ do
         end)
         stopBtn.MouseEnter:Connect(function()
             game:GetService("TweenService"):Create(stopBtn,
-                TweenInfo.new(0.12), { BackgroundColor3 = Color3.fromRGB(255, 40, 40) }):Play()
+                TweenInfo.new(0.12), { BackgroundColor3 = Color3.fromRGB(255, 255, 0) }):Play()
         end)
         stopBtn.MouseLeave:Connect(function()
             game:GetService("TweenService"):Create(stopBtn,

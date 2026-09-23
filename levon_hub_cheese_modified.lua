@@ -4806,20 +4806,20 @@ BX.module("ui.window", function(BX)
 
     local okWin, window = pcall(function()
         return Rayfield:CreateWindow({
-            name = "Levon Hub",
+            name = "Cheese Hub",
             subtitle = "Steal An Egg",
             icon = 114534441742480, -- supplied Levon logo asset
             -- 116092620575995 is used as the compact header artwork in the custom mobile UI.
-            showName = "Levon Hub",
+            showName = "Cheese Hub",
             sidebarLayout = true,
             profile = "Premium",
             theme = {
-                AccentColor     = Color3.fromRGB(255, 140, 0),
-                AccentStroke    = Color3.fromRGB(180, 80, 255),
+                AccentColor     = Color3.fromRGB(255, 220, 0),
+                AccentStroke    = Color3.fromRGB(255, 200, 0),
                 AccentGlow      = 0.45,
-                TextColor       = Color3.fromRGB(255, 150, 30),
-                BackgroundColor = Color3.fromRGB(60, 20, 100),
-                ElementColor    = Color3.fromRGB(90, 35, 150),
+                TextColor       = Color3.fromRGB(255, 240, 100),
+                BackgroundColor = Color3.fromRGB(50, 45, 0),
+                ElementColor    = Color3.fromRGB(80, 70, 0),
             },
             -- Off deliberately. Config persistence is its own feature and is
             -- not ported yet; leaving autoLoad on would have the library
@@ -4827,7 +4827,7 @@ BX.module("ui.window", function(BX)
             configuration = {
                 autoSave = false,
                 autoLoad = false,
-                fileName = "LevonHub_StealAnEgg",
+                fileName = "CheeseHub_StealAnEgg",
             },
         })
     end)
@@ -4949,8 +4949,8 @@ BX.module("ui.window", function(BX)
 
             local particles = {}
             local rng = Random.new()
-            local orange = Color3.fromRGB(255, 140, 0)
-            local black = Color3.fromRGB(80, 20, 130)
+            local orange = Color3.fromRGB(255, 220, 0)
+            local black = Color3.fromRGB(80, 70, 0)
             for i = 1, 20 do
                 local d = Instance.new("Frame")
                 local sz = rng:NextInteger(3, 7)
@@ -4984,8 +4984,8 @@ BX.module("ui.window", function(BX)
             for _, obj in ipairs(main:GetDescendants()) do
                 if obj:IsA("TextLabel") or obj:IsA("TextButton") then
                     local t = tostring(obj.Text or ""):lower()
-                    if t:find("levon hub", 1, true) then
-                        obj.TextColor3 = Color3.fromRGB(200, 80, 255)
+                    if t:find("cheese hub", 1, true) or t:find("levon hub", 1, true) then
+                        obj.TextColor3 = Color3.fromRGB(255, 220, 0)
                     end
                 end
             end
@@ -5045,12 +5045,12 @@ BX.module("ui.window", function(BX)
 
     function M.notify(title, content, duration)
         if not hasNotify then
-            log.info("[notify] %s: %s", tostring(title or "LEVON HUB"), tostring(content or ""))
+            log.info("[notify] %s: %s", tostring(title or "CHEESE HUB"), tostring(content or ""))
             return false
         end
         return (BX.try("window.notify", function()
             Rayfield:Notify({
-                title = title or "LEVON HUB",
+                title = title or "CHEESE HUB",
                 content = content or "",
                 duration = duration or 4,
             })
@@ -5092,13 +5092,13 @@ BX.module("ui.window", function(BX)
         local MID_SIZE  = isTouch and 64 or 80   -- anello medio
         local OUT_SIZE  = isTouch and 76 or 94   -- anello esterno
 
-        -- Outer glow ring (effetto alone viola esterno)
+        -- Outer glow ring (effetto alone amarillo esterno)
         local outerGlow = Instance.new("Frame")
         outerGlow.Name             = "LevonOuterGlow"
         outerGlow.AnchorPoint      = Vector2.new(0.5, 0.5)
         outerGlow.Position         = UDim2.new(0.08, 0, 0.88, 0)
         outerGlow.Size             = UDim2.fromOffset(OUT_SIZE, OUT_SIZE)
-        outerGlow.BackgroundColor3 = Color3.fromRGB(120, 0, 220)
+        outerGlow.BackgroundColor3 = Color3.fromRGB(220, 160, 0)
         outerGlow.BackgroundTransparency = 0.65
         outerGlow.BorderSizePixel  = 0
         outerGlow.ZIndex           = 8
@@ -5114,7 +5114,7 @@ BX.module("ui.window", function(BX)
         midGlow.AnchorPoint      = Vector2.new(0.5, 0.5)
         midGlow.Position         = UDim2.new(0.08, 0, 0.88, 0)
         midGlow.Size             = UDim2.fromOffset(MID_SIZE, MID_SIZE)
-        midGlow.BackgroundColor3 = Color3.fromRGB(160, 20, 255)
+        midGlow.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
         midGlow.BackgroundTransparency = 0.5
         midGlow.BorderSizePixel  = 0
         midGlow.ZIndex           = 9
@@ -5124,13 +5124,13 @@ BX.module("ui.window", function(BX)
         mgCorner.CornerRadius = UDim.new(1, 0)
         mgCorner.Parent = midGlow
 
-        -- Cerchio principale sfondo nero profondo
+        -- Cerchio principale sfondo amarillo oscuro
         local circle = Instance.new("TextButton")
         circle.Name             = "LevonCircle"
         circle.AnchorPoint      = Vector2.new(0.5, 0.5)
         circle.Position         = UDim2.new(0.08, 0, 0.88, 0)
         circle.Size             = UDim2.fromOffset(BTN_SIZE, BTN_SIZE)
-        circle.BackgroundColor3 = Color3.fromRGB(4, 0, 12)
+        circle.BackgroundColor3 = Color3.fromRGB(30, 25, 0)
         circle.BorderSizePixel  = 0
         circle.Text             = ""
         circle.AutoButtonColor  = false
@@ -5141,9 +5141,9 @@ BX.module("ui.window", function(BX)
         cc.CornerRadius = UDim.new(1, 0)
         cc.Parent = circle
 
-        -- Bordo viola elettrico con gradient
+        -- Bordo amarillo dorado con gradient
         local stroke = Instance.new("UIStroke")
-        stroke.Color           = Color3.fromRGB(180, 50, 255)
+        stroke.Color           = Color3.fromRGB(255, 200, 0)
         stroke.Thickness       = 3.5
         stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         stroke.Parent          = circle
@@ -5162,12 +5162,12 @@ BX.module("ui.window", function(BX)
         imgCorner.CornerRadius = UDim.new(1, 0)
         imgCorner.Parent = img
 
-        -- Overlay sottile viola trasparente per dare colore all'immagine
+        -- Overlay sottile amarillo trasparente per dare colore all'immagine
         local overlay = Instance.new("Frame")
         overlay.Size                   = UDim2.new(1, 0, 1, 0)
         overlay.AnchorPoint            = Vector2.new(0.5, 0.5)
         overlay.Position               = UDim2.new(0.5, 0, 0.5, 0)
-        overlay.BackgroundColor3       = Color3.fromRGB(100, 0, 200)
+        overlay.BackgroundColor3       = Color3.fromRGB(255, 180, 0)
         overlay.BackgroundTransparency = 0.82
         overlay.BorderSizePixel        = 0
         overlay.ZIndex                 = 12
@@ -5176,16 +5176,16 @@ BX.module("ui.window", function(BX)
         ovCorner.CornerRadius = UDim.new(1, 0)
         ovCorner.Parent = overlay
 
-        -- Etichetta LEVON HUB SOTTO il cerchio (non sovrapposta) - più piccola su mobile
+        -- Etichetta CHEESE HUB SOTTO il cerchio (non sovrapposta) - più piccola su mobile
         local label = Instance.new("TextLabel")
         label.Size                   = UDim2.fromOffset(isTouch and 70 or 90, isTouch and 11 or 14)
         label.AnchorPoint            = Vector2.new(0.5, 0)
         label.Position               = UDim2.new(0.5, 0, 1, 3)
         label.BackgroundTransparency = 1
-        label.Text                   = "LEVON HUB"
+        label.Text                   = "CHEESE HUB"
         label.Font                   = Enum.Font.GothamBlack
         label.TextSize               = isTouch and 8 or 10
-        label.TextColor3             = Color3.fromRGB(210, 80, 255)
+        label.TextColor3             = Color3.fromRGB(255, 220, 0)
         label.TextXAlignment         = Enum.TextXAlignment.Center
         label.ZIndex                 = 13
         label.Parent                 = circle
@@ -5198,12 +5198,12 @@ BX.module("ui.window", function(BX)
                 local pulse  = math.abs(math.sin(t * 2.8))
                 local pulse2 = math.abs(math.sin(t * 4.1 + 1))
                 pcall(function()
-                    -- stroke elettrico
+                    -- stroke dorato
                     stroke.Thickness = 3 + pulse * 4
                     stroke.Color = Color3.fromRGB(
-                        150 + math.floor(pulse * 105),
-                        20  + math.floor(pulse * 30),
-                        255
+                        200 + math.floor(pulse * 55),
+                        160 + math.floor(pulse * 60),
+                        0
                     )
                     -- outer glow respira
                     outerGlow.BackgroundTransparency = 0.55 + pulse * 0.35
@@ -5214,9 +5214,9 @@ BX.module("ui.window", function(BX)
                     midGlow.Position = UDim2.new(circle.Position.X.Scale, 0, circle.Position.Y.Scale, 0)
                     -- colore etichetta
                     label.TextColor3 = Color3.fromRGB(
-                        180 + math.floor(pulse2 * 75),
-                        30  + math.floor(pulse2 * 50),
-                        255
+                        255,
+                        200 + math.floor(pulse2 * 55),
+                        0
                     )
                     -- overlay pulsante
                     overlay.BackgroundTransparency = 0.75 + pulse * 0.2
